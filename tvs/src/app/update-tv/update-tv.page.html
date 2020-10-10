@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Edita un televisor</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="tvUpdateForm" (ngSubmit)="onFormSubmit()">
+    <ion-item>
+      <ion-label position="floating">Modelo</ion-label>
+      <ion-input formControlName="model" type="text" required></ion-input>
+      <ion-label color="danger" *ngIf="tvUpdateForm.controls.model.errors?.required && (tvUpdateForm.touched || tvUpdateForm.dirty)">El modelo es obligatorio </ion-label>
+      <ion-label color="danger" *ngIf="tvUpdateForm.controls.model.errors?.minlength && (tvUpdateForm.touched || tvUpdateForm.dirty)">Mínimo 4 carácteres.</ion-label>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Marca</ion-label>
+      <ion-input formControlName="brand" type="text" required></ion-input>
+      <ion-label class = "brand-validator" color="danger" *ngIf="tvUpdateForm.controls.brand.errors?.required && (tvUpdateForm.touched || tvUpdateForm.dirty)">La marca es obligatoria </ion-label>
+      <ion-label class = "brand-validator" color="danger" *ngIf="tvUpdateForm.controls.brand.errors?.minlength && (tvUpdateForm.touched || tvUpdateForm.dirty)">Mínimo 4 carácteres.</ion-label>
+      
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Precio</ion-label>
+      <ion-input formControlName="price" type="text" required></ion-input>
+      <ion-label color="danger" *ngIf="tvUpdateForm.controls.price.errors?.required && (tvUpdateForm.touched || tvUpdateForm.dirty)">El precio es obligatorio </ion-label>
+    </ion-item>
+
+    <ion-row>
+      <ion-col>
+        <ion-button class = "update-form-submit" color ="tertiaty" type="submit" shape="round" expand="block">Editar televisor</ion-button>
+      </ion-col>
+    </ion-row>
+  </form>
+</ion-content>
